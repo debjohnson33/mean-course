@@ -15,7 +15,7 @@ mongoose.connect('mongodb+srv://debjohnson_11:kiNCADSLbM0ixfyk@cluster0-wii8c.mo
 	});
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+//app.use(bodyParser.urlencoded({extended: false}));
 
 app.use((req, res, next) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');
@@ -51,11 +51,12 @@ app.use('/api/posts', (req, res, next) => {
 		});
 });
 
-app.delete('/api/posts/:id', (req, res, next) => {
-	Post.deleteOne({_id: req.params.id}).then(result => {
-		console.log(result);
+app.delete("/api/posts/:id", (req, res, next) => {
+	//Post.deleteOne({_id: req.params.id}).then(result => {
+	//	console.log(result);
+	console.log(req.params.id);
 		res.status(200).json({message: 'Post deleted'});
-	});
+	//});
 });
 
 module.exports = app;
